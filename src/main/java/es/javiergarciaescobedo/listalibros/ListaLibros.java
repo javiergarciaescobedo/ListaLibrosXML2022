@@ -14,7 +14,7 @@ public class ListaLibros {
         return listaLibros;
     }
     
-    //@XmlElement(name = "libro")
+    @XmlElement(name = "libro")
     public void setListaLibros(ArrayList<Libro> listaLibros) {
         this.listaLibros = listaLibros;
     }

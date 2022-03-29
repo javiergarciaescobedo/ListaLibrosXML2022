@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <listaLibros>
-    <libro>
+    <listaLibros>
         <autor>Luisa Pérez</autor>
         <numPaginas>0</numPaginas>
         <precio>0.0</precio>
         <titulo>LISTAS EN JAVA</titulo>
-    </libro>
-    <libro>
+    </listaLibros>
+    <listaLibros>
         <numPaginas>0</numPaginas>
         <precio>0.0</precio>
-    </libro>
-    <libro>
+    </listaLibros>
+    <listaLibros>
         <numPaginas>0</numPaginas>
         <precio>0.0</precio>
         <titulo>XML EN JAVA 2</titulo>
-    </libro>
+    </listaLibros>
 </listaLibros>

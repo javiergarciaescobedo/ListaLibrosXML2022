@@ -3,7 +3,9 @@ package es.javiergarciaescobedo.listalibros;
 import java.io.File;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -17,10 +19,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        var scene = new Scene(new StackPane(), 640, 480);
+        StackPane root = new StackPane();
+        var scene = new Scene(root, 640, 480);
         stage.setScene(scene);
         stage.show();
-        
+                
         Libro libro1 = new Libro("Ficheros en Java", "Luisa Pérez");
         System.out.println(libro1.getTitulo());
         libro1.setTitulo("Listas en Java");
@@ -38,6 +41,14 @@ public class App extends Application {
         listaLibros.getListaLibros().add(libro2);
         listaLibros.getListaLibros().add(libro3);       
         
+        Button buttonSelecFile = new Button("Guardar XML");
+        root.getChildren().add(buttonSelecFile);
+        buttonSelecFile.setOnAction((t) -> {
+            UtilXML.guardarDatosXML(stage, listaLibros);
+        });                               
+
+
+        
 //        // Mostrar el título del tercer libro
 //        System.out.println(listaLibros.get(2).getTitulo());
 //        
@@ -52,21 +63,10 @@ public class App extends Application {
 //        for(int i=0; i<listaLibros.size(); i++) {
 //            System.out.println(listaLibros.get(i));
 //        }
-        
-        JAXBContext contexto;
-        try {
-            File fileListaLibros = new File("ListaLibros.xml");
-            contexto = JAXBContext.newInstance(ListaLibros.class);
-            Marshaller marshaller = contexto.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            marshaller.marshal(listaLibros, System.out);
-            marshaller.marshal(listaLibros, fileListaLibros);
-        } catch (JAXBException ex) {
-            System.out.println("Se ha producido un error");
-            ex.printStackTrace();
-        }
-        
+
     }
+    
+
 
     public static void main(String[] args) {
         launch();
